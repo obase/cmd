@@ -69,9 +69,9 @@ func (c *Command) PrintUsage(w *os.File) {
 var command *Command = New("")
 
 func Exec(name string) int {
+	command.Name = name
 	// 命令格式: dataflow <command> [-arguments]
 	if len(os.Args) > 1 {
-		command.Name = name
 		if c := command.Get(os.Args[1]); c != nil {
 			phelp := flag.Bool("help", false, "print help information")
 			if state := c.Init(); state != 0 {
